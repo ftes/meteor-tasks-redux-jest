@@ -16,9 +16,7 @@ const App = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     const text = textInput.value.trim();
-    Tasks.insert({
-      text, createdAt: new Date(), owner: Meteor.userId(), username: Meteor.user().profile.name,
-    });
+    Meteor.call('tasks.insert', text);
     textInput.value = '';
   };
 
