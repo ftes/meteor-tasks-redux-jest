@@ -1,0 +1,11 @@
+parser: babel-eslint
+extends: airbnb
+settings:
+  import/resolver: meteor
+rules:
+  import/extensions:
+    - off
+    - never
+  no-underscore-dangle:
+    - error
+    - allow: [_id]
