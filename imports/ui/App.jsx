@@ -1,11 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 
 import Tasks from '/imports/api/tasks';
 import Task from './Task';
+import { setHideCompleted } from './actions';
 
-const App = ({ tasks }) => {
+const App = ({ tasks, incompleteCount, hideCompleted, dispatch }) => {
   let textInput;
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,7 +19,18 @@ const App = ({ tasks }) => {
   return (
     <div className="container">
       <header>
-        <h1>Todo List</h1>
+        <h1>Todo List ({incompleteCount})</h1>
+
+        <label className="hide-completed" htmlFor="hideCompleted">
+          <input
+            id="hideCompleted"
+            type="checkbox"
+            readOnly
+            checked={hideCompleted}
+            onClick={() => dispatch(setHideCompleted(!hideCompleted))}
+          />
+          Hide completed tasks
+        </label>
 
         <form className="new-task" onSubmit={handleSubmit}>
           <input
@@ -28,7 +41,7 @@ const App = ({ tasks }) => {
         </form>
       </header>
       <ul>
-        {tasks.map(task => (
+        {tasks.filter(({ checked }) => !hideCompleted || !checked).map(task => (
           <Task key={task._id} task={task} />
         ))}
       </ul>
@@ -38,8 +51,14 @@ const App = ({ tasks }) => {
 
 App.propTypes = {
   tasks: PropTypes.arrayOf(PropTypes.object).isRequired,
+  incompleteCount: PropTypes.number.isRequired,
+  hideCompleted: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
-export default withTracker(() => ({
+const AppWithTracker = withTracker(() => ({
   tasks: Tasks.find({}, { sort: { createdAt: -1 } }).fetch(),
+  incompleteCount: Tasks.find({ checked: { $ne: true } }).count(),
 }))(App);
+
+export default connect(({ hideCompleted }) => ({ hideCompleted }))(AppWithTracker);

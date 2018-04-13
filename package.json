@@ -12,7 +12,9 @@
     "meteor-node-stubs": "^0.3.2",
     "prop-types": "^15.6.1",
     "react": "^16.3.1",
-    "react-dom": "^16.3.1"
+    "react-dom": "^16.3.1",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2"
   },
   "devDependencies": {
     "@meteorjs/eslint-config-meteor": "^1.0.5",
