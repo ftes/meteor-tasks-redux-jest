@@ -8,6 +8,7 @@ import { render } from 'react-dom';
 
 import App from '/imports/ui/App';
 import reducer from '/imports/ui/reducer';
+import '/imports/startup/accounts-config';
 
 const store = createStore(
   reducer,
