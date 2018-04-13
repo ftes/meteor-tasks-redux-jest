@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "start": "meteor run",
-    "lint": "eslint **/*.js",
+    "lint": "eslint --ext .js --ext .jsx .",
     "pretest": "npm run lint --silent"
   },
   "dependencies": {
