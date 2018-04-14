@@ -9,7 +9,7 @@ import Task from './Task';
 import AccountsUiWrapper from './AccountsUiWrapper';
 import { setHideCompleted } from './actions';
 
-const App = ({
+export const App = ({
   tasks, incompleteCount, hideCompleted, dispatch, currentUser,
 }) => {
   let textInput;

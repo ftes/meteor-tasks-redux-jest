@@ -13,7 +13,7 @@ import '/imports/startup/accounts-config';
 const store = createStore(
   reducer,
   // eslint-disable-next-line no-underscore-dangle
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
 Meteor.startup(() => {
@@ -21,6 +21,6 @@ Meteor.startup(() => {
     <Provider store={store}>
       <App />
     </Provider>,
-    document.getElementById('render-target')
+    document.getElementById('render-target'),
   );
 });

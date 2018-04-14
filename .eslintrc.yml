@@ -11,3 +11,8 @@ rules:
     - error
     - allow: [_id]
   object-shorthand: [off, never]
+  import/no-named-as-default: [off, never]
+overrides:
+  - files: ['**/*.test.*', '__mocks__/**/*']
+    env:
+      jest: true
