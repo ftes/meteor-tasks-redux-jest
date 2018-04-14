@@ -13,6 +13,6 @@ rules:
   object-shorthand: [off, never]
   import/no-named-as-default: [off, never]
 overrides:
-  - files: ['**/*.test.*', '__mocks__/**/*']
+  - files: ['**/*.test.*', 'test/**/*']
     env:
       jest: true

@@ -40,9 +40,12 @@
       "<rootDir>/node_modules/"
     ],
     "moduleNameMapper": {
-      "^meteor/(.*)": "<rootDir>/__mocks__/$1.js",
+      "^meteor/(.*)": "<rootDir>/test/__mocks__/$1.js",
       "^/(.*)": "<rootDir>/$1.js"
     },
-    "setupTestFrameworkScriptFile": "<rootDir>/test/setupTests.js"
+    "setupTestFrameworkScriptFile": "<rootDir>/test/setupTests.js",
+    "transform": {
+      "^.+\\.(js|jsx)$": "<rootDir>/.jest.transform.js"
+    }
   }
 }
